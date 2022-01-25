@@ -4,19 +4,37 @@ import * as React from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import { useStaticQuery, graphql } from "gatsby"
-import "./homeCategories.css"
+import "./styles/homeCategories.css";
 
 
 const Categories = styled.div`
-  width: 1220px;
-  margin-left: 16%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 30px;
+    width: 297.5px;
+    height: 347.5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1em;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    @media (max-width: 1260px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media (max-width: 960px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
 `
 const HomeCategoriesHeader = styled.h1`
-  margin-left: 17%;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
   text-align: left;
+`
+
+const Wrapper = styled.div`
+    width: 100%;
 `
 
 
@@ -56,7 +74,7 @@ const HomeCategories = () => {
     `)
 
 return (
-    <div>
+    <Wrapper>
         <HomeCategoriesHeader>Top Selling Categories</HomeCategoriesHeader>
         <Categories>
         {
@@ -343,7 +361,7 @@ return (
             </a>
         </div>            
         </Categories> 
-    </div>  
+    </Wrapper>  
     )
 }
 

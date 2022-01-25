@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Topbar from "./Topbar"
 import Navbar from "./Navbar"
 import { StaticImage } from "gatsby-plugin-image"
-import "./header.css"
+import "./styles/header.css"
 import ShipTimer from "./ShipTimer"
 import IntervalRerenderer  from "react-interval-rerenderer"
 
