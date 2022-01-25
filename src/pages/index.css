@@ -1,0 +1,32 @@
+
+body {
+    font-family: "Open Sans";
+    margin: 0;
+}
+
+.carousel-caption {
+    margin-top: 20px; 
+    color: black; 
+    text-shadow: none;
+}
+
+.carousel-image-1 {
+    font-weight: bold; 
+    color: red;
+}
+
+.carousel-image-2 {
+    font-weight: 300; 
+    margin-top: -10px;
+}
+
+.carousel-caption-1 {
+    font-weight: lighter; 
+    text-shadow: none;
+}
+
+.container {
+    position: absolute;
+    top: 376px;
+    left: 385px;
+}

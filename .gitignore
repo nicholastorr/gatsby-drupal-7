@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # gitignore template for Drupal 8 projects
 #
 # earlier versions of Drupal are tracked in `community/PHP/`
@@ -47,3 +48,8 @@
 /robots.txt
 /update.php
 /web.config
+=======
+node_modules/
+.cache/
+public
+>>>>>>> 66c837ad4089bca82c341955a4fabdef529a7e46
