@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const ProductList = ({data}) => {
     
@@ -11,6 +12,7 @@ const ProductList = ({data}) => {
             {data.allCommerceProduct.nodes.map(product => (
                 <div>
                     <h3>{product.data.title}</h3>
+                    <img src={`http://stagingsupply.htm-mbs.com/sites/default/files/products/${product.data.sku.replace('p', '')}/${product.data.sku.replace('p', '')}_1.JPG`} width={200} alt="" />
                     <h3>{product.data.sku}</h3>
                 </div>
             ))}

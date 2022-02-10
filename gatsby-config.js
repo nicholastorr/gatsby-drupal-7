@@ -1,4 +1,7 @@
 const path = require('path')
+const fs = require('fs');
+const gracefulFs = require('graceful-fs');
+gracefulFs.gracefulify(fs);
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -15,6 +18,12 @@ module.exports = {
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images/`,
+      },
+    },
     "gatsby-transformer-sharp",
     {
       resolve: `gatsby-source-drupal7`,
@@ -25,7 +34,6 @@ module.exports = {
           username: process.env.BASIC_AUTH_USERNAME,
           password: process.env.BASIC_AUTH_PASSWORD,
         },
-        skipFileDownloads: true,
       },
     },
   ],
