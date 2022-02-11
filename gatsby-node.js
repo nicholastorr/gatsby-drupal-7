@@ -42,6 +42,27 @@ exports.onPreBootstrap = () => {
       }      
     `);
 
+    const castVinyl = await graphql(`
+    {
+        allCommerceProduct(
+            filter: {data: {field_web_site: {elemMatch: {id: {eq: "10482"}}}, type: {eq: "vinyl"}, field_category: {eq: "cast_vinyl"}}}
+          ) {
+            nodes {
+              data {
+                field_product_image {
+                  file {
+                    uuid
+                  }
+                }
+                sku
+                title
+              }
+            }
+          }
+        }
+    `);
+
+
     
     //category logic
     //run query for categories
@@ -58,6 +79,25 @@ exports.onPreBootstrap = () => {
                 category: pathName,
             },
         })
+    })
+
+    const newArr = [];
+
+    castVinyl.data.allCommerceProduct.nodes.map(node => {
+        node.data.field_product_image.map(image => {
+            newArr.push(image.file.uuid);
+        })
+    })
+
+
+    createPage({
+        path: '/cast-vinyl',
+        component: path.resolve('./src/templates/castvinyl.js'),
+        context: {
+            //need to make this dynamic
+            data: castVinyl.data.allCommerceProduct.nodes,
+            uuids: newArr,
+        },
     })
 
 

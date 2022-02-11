@@ -16,6 +16,17 @@ module.exports = {
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
+    {
+      resolve: `gatsby-source-drupal7`,
+      options: {
+        baseUrl: `http://stagingsupply.htm-mbs.com/`,
+        apiBase: `file.json`, // optional, defaults to `restws_resource.json`
+        basicAuth: {
+          username: process.env.BASIC_AUTH_USERNAME,
+          password: process.env.BASIC_AUTH_PASSWORD,
+        },
+      },
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     {
@@ -35,6 +46,13 @@ module.exports = {
           password: process.env.BASIC_AUTH_PASSWORD,
         },
       },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'allFiles',
+        imagePath: 'url',
+    },
     },
   ],
 };
