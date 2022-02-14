@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs');
 const gracefulFs = require('graceful-fs');
+const { resolve } = require('path');
 gracefulFs.gracefulify(fs);
 
 require("dotenv").config({
@@ -51,8 +52,8 @@ module.exports = {
       resolve: `gatsby-plugin-remote-images`,
       options: {
         nodeType: 'allFiles',
-        imagePath: 'url',
-    },
+        imagePath: 'nodes[].data.url',
+      },
     },
   ],
 };
