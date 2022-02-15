@@ -14,23 +14,14 @@ const ProductList = styled.div`
 `
 
 const CastVinyl = ( data ) => {
-    const [offset, setOffset] = React.useState(0);
+    //set products to state
+    //set filter to state
     const [count, setCount] = React.useState(24);
 
     
     const handleCount = () => {
         setCount(count + 24);
     }
-
-    React.useEffect(() => {
-        const onScroll = () => setOffset(window.pageYOffset);
-        // clean up code
-        window.removeEventListener('scroll', onScroll);
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
-    }, []);
-
-    console.log(offset); 
 
  
 
