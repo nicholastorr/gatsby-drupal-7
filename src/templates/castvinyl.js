@@ -33,10 +33,11 @@ const CastVinyl = ( data ) => {
             <Sidebar 
             products={products}
             setProducts={setProducts}
+            baseProducts={data.pageContext.data}
             />
             <div style={{display: "flex", flexDirection: "column"}}>
             <h1 style={{width: "50%"}}>Cast vinyl</h1>
-            <h3>Product Count: {data.pageContext.data.length}</h3>
+            <h3>Product Count: {products.length}</h3>
             <ProductList>
             {products.slice(0, count).map(product => {
                 return (
