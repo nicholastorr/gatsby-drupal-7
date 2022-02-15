@@ -2,25 +2,62 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import ProductImage from '../components/ProductImage';
+import  styled  from 'styled-components';
+import { Sidebar } from '../components/Sidebar';
+import  Header  from '../components/header';
+
+
+const ProductList = styled.div`
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr;
+     width: 915px;
+`
 
 const CastVinyl = ( data ) => {
+    const [offset, setOffset] = React.useState(0);
+    const [count, setCount] = React.useState(24);
+
     
-    
+    const handleCount = () => {
+        setCount(count + 24);
+    }
+
+    React.useEffect(() => {
+        const onScroll = () => setOffset(window.pageYOffset);
+        // clean up code
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    console.log(offset); 
+
+ 
+
     return (
-        <div>
-            {console.log(data)}
-            <h1>Cast vinyl</h1>
-            {data.pageContext.data.map(product => {
+        <div style={{width: "100%"}}> 
+        <Header/>
+        <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
+            <Sidebar products={data.pageContext.data}/>
+            <div style={{display: "flex", flexDirection: "column"}}>
+            <h1 style={{width: "50%"}}>Cast vinyl</h1>
+            <h3>Product Count: {data.pageContext.data.length}</h3>
+            <ProductList>
+            {data.pageContext.data.slice(0, count).map(product => {
                 return (
-                    <div>
-                    <h1>{product.data.title}</h1>
-                    {product.data.field_product_image.length > 0  ? 
-                     <ProductImage images={data.data.allFiles} sku={`${product.data.sku}`}/> :
-                     <img src="http://stagingsupply.htm-mbs.com/sites/default/files/default_images/drupalcommerce.png" width={200}/>}
-                    <h3>{product.data.sku}</h3>
-                    </div>
+                    <a href={`/vinyl/${product.data.sku}`}><div>
+                        {product.data.field_product_image.length > 0  ? 
+                            <ProductImage images={data.data.allFiles} sku={`${product.data.sku}`}/> :
+                            <StaticImage src="http://stagingsupply.htm-mbs.com/sites/default/files/default_images/drupalcommerce.png" width={250} alt=""/>}
+                             <h3>{product.data.title}</h3>
+                                <h5>{product.data.sku}</h5>
+                    </div></a>
                     ) 
             })}
+            </ProductList>
+            <h3 onClick={handleCount}>Load more</h3>
+            </div>
+        </div>
         </div>
     )
 }

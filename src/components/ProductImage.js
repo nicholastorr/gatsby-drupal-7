@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-
+import { StaticImage, GatsbyImage } from 'gatsby-plugin-image';
 
 const ProductImage = ({ images, sku }) => {
     //filter array and return image that matches sku
@@ -12,11 +11,12 @@ const ProductImage = ({ images, sku }) => {
             img.push(image.data.url)
         }
     })
-    console.log(images)
-    console.log(img)
+
+    const imgPath = img[0];
+
     return (
         <div>
-            <img src={img[0]} width={200} alt="" />
+            <img src={imgPath} width={250} alt="Test" />
         </div>
     )
 }

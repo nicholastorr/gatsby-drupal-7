@@ -17,7 +17,6 @@ exports.onPreBootstrap = () => {
     {
         allCommerceProduct(
             filter: {data: {field_web_site: {elemMatch: {id: {eq: "10482"}}}, type: {eq: "vinyl"}}}
-            limit: 200
           ) {
             totalCount
             nodes {
@@ -54,6 +53,23 @@ exports.onPreBootstrap = () => {
                     uuid
                   }
                 }
+                field_product_series
+                field_product_roll_size
+                field_product_width
+                field_product_width_in
+                field_product_length
+                field_product_length_in_yards
+                field_product_finish
+                field_product_color
+                field_product_color_number
+                field_product_color_range
+                field_product_adhesive
+                field_product_application
+                field_product_punched
+                field_product_surface
+                field_product_vinyl_type
+                field_product_durability
+                field_product_vinyl_class
                 sku
                 title
               }
