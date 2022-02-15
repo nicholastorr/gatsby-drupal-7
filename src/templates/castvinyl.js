@@ -17,6 +17,7 @@ const CastVinyl = ( data ) => {
     //set products to state
     //set filter to state
     const [count, setCount] = React.useState(24);
+    const [products, setProducts] = React.useState(data.pageContext.data);
 
     
     const handleCount = () => {
@@ -29,12 +30,15 @@ const CastVinyl = ( data ) => {
         <div style={{width: "100%"}}> 
         <Header/>
         <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-            <Sidebar products={data.pageContext.data}/>
+            <Sidebar 
+            products={products}
+            setProducts={setProducts}
+            />
             <div style={{display: "flex", flexDirection: "column"}}>
             <h1 style={{width: "50%"}}>Cast vinyl</h1>
             <h3>Product Count: {data.pageContext.data.length}</h3>
             <ProductList>
-            {data.pageContext.data.slice(0, count).map(product => {
+            {products.slice(0, count).map(product => {
                 return (
                     <a href={`/vinyl/${product.data.sku}`}><div>
                         {product.data.field_product_image.length > 0  ? 

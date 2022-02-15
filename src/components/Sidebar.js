@@ -15,18 +15,27 @@ const Filter = styled.li`
     border-bottom: 1px solid black;
 `
 
-export const Sidebar = ({ products }) => {
+export const Sidebar = ({ products, setProducts }) => {
+    
+
     const [click, setClick] = React.useState(false);
 
     const handleClick = () => {
         setClick(!click);
     }
 
+    const handleFilter = (filter) => {
+        const filteredProducts = products.filter(product => product.data.field_product_roll_size === filter);
+        console.log(filteredProducts);
+        setProducts(filteredProducts);
+    }
 
 
     const rollSize = [...new Set(products.map(fields => fields.data.field_product_roll_size))]
     console.log(products)
     console.log(rollSize)
+
+
     return (
         <SidebarContainer>
             <h3>Mbs Sign Supply</h3>
@@ -37,11 +46,11 @@ export const Sidebar = ({ products }) => {
             <li onClick={() => handleClick()}>Roll Size</li>
                 {/*map through roll size array*/}
                 {/*each size has an onclick function that filters the products array*/}
-                {click ? rollSize.map(size => {
+                {click ? rollSize.sort().map(size => {
                     return (
                         <span style={{display: "flex", flexDirection: "row", alignItems: "center", height: "30px"}}>
-                        <input type="checkbox" />
-                        <p>{size}</p>
+                        <input type="checkbox" onClick={() => handleFilter(size)} />
+                        <p >{size}</p>
                         </span>
                     )
                 }) : null}
