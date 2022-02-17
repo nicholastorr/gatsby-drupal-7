@@ -21,11 +21,6 @@ module.exports = {
       resolve: `gatsby-source-drupal7`,
       options: {
         baseUrl: `http://stagingsupply.htm-mbs.com/`,
-        apiBase: `file.json`, // optional, defaults to `restws_resource.json`
-        basicAuth: {
-          username: process.env.BASIC_AUTH_USERNAME,
-          password: process.env.BASIC_AUTH_PASSWORD,
-        },
       },
     },
     "gatsby-plugin-react-helmet",
@@ -41,11 +36,6 @@ module.exports = {
       resolve: `gatsby-source-drupal7`,
       options: {
         baseUrl: `http://stagingsupply.htm-mbs.com/`,
-        apiBase: `restws_resource.json`, // optional, defaults to `restws_resource.json`
-        basicAuth: {
-          username: process.env.BASIC_AUTH_USERNAME,
-          password: process.env.BASIC_AUTH_PASSWORD,
-        },
       },
     },
     {
